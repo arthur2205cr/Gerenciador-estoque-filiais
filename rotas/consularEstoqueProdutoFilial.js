@@ -1,10 +1,10 @@
 import bd from "../bd.js";
 
 export default function consultarEstoqueProdutoFilial(req, res) {
-    const { id_produto, id_filial } = req.body;
+    const { id_produto, id_filial } = req.params;
 
     if (!id_produto || !id_filial ) 
-    return res.status(400).json({ msg_erro: 'Todos os campos são obrigatórios para atualização!' });
+    return res.status(400).json({ msg_erro: 'Todos os campos são obrigatórios!' });
 
 
     const query = 'SELECT quantidade FROM estoque WHERE id_produto = ? AND id_filial = ?';
