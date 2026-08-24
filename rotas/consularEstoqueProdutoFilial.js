@@ -1,9 +1,13 @@
 import bd from "../bd.js";
 
-export default function buscarProdutoPorId(req, res) {
-    const { id } = req.params;
+export default function consultarEstoqueProdutoFilial(req, res) {
+    const { id_produto, id_filial } = req.body;
 
-    const query = 'SELECT id, id_fornecedor, nome, marca, tipo, descricao, valor, data_recebimento FROM produto WHERE id = ?';
+    if (!id_produto || !id_filial ) 
+    return res.status(400).json({ msg_erro: 'Todos os campos são obrigatórios para atualização!' });
+
+
+    const query = 'SELECT quantidade FROM estoque WHERE id_produto = ? AND id_filial = ?';
     
     bd.query(query, [id], (erro, resultado) => {
         if (erro)
