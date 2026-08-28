@@ -1,4 +1,4 @@
-import bd from '../bd.js';
+import bd from '../../bd.js';
 
 export default function cadastrarProduto(req, res) {
     const { nome, marca, tipo, descricao, valor, data_recebimento } = req.body;

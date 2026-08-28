@@ -1,4 +1,4 @@
-import bd from "../bd.js";
+import bd from "../../bd.js";
 
 export default function consultarEstoqueProdutoFilial(req, res) {
     const { id_produto, id_filial } = req.params;

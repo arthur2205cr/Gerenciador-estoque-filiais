@@ -1,4 +1,4 @@
-import bd from '../bd.js';
+import bd from '../../bd.js';
 
 export default function listarProdutos(req, res) {
     bd.query('SELECT * FROM produto', (erro, resultado) => {

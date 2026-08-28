@@ -1,4 +1,4 @@
-import bd from "../bd.js";
+import bd from "../../bd.js";
 
 export default function editarProduto(req, res) {
     const { id } = req.params;
