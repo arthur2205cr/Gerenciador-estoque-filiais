@@ -1,17 +1,23 @@
 import bd from '../../bd.js';
 
-export default function cadastrarProduto(req, res) {
-    const { nome, marca, tipo, descricao, valor, data_recebimento } = req.body;
+export default function cadastrarFornecedor(req, res) {
+    const { 
+        nome, 
+        cnpj, 
+        telefone, 
+        email, 
+        endereco 
+    } = req.body;
 
-    if ( !nome || !marca || !tipo || !descricao || valor == null || !data_recebimento)
+    if ( !nome || !cnpj || !telefone || !email || !endereco )
         return res.status(400).json({msg_erro: 'Todos os campos são obrigatórios'});
 
-    const query = 'INSERT INTO produto (nome, marca, tipo, descricao, valor, data_recebimento) VALUES (?, ?, ?, ?, ?, ?)';
+    const query = 'INSERT INTO fornecedor (nome, cnpj, telefone, email, endereco) VALUES (?, ?, ?, ?, ?, ?)';
 
-    bd.query(query, [nome, marca, tipo, descricao, valor, data_recebimento], (erro, resultado) => {
+    bd.query(query, [nome, cnpj, telefone, email, endereco], (erro, resultado) => {
         if (erro)
             return res.status(500).json({ msg_erro: erro.message });
 
-        res.status(201).json({ id: resultado.insertId, nome, marca, tipo, descricao, valor, data_recebimento });
+        res.status(201).json({ id: resultado.insertId, nome, cnpj, telefone, email, endereco });
     });
 }
